@@ -13,7 +13,7 @@ function App() {
   useEffect(() => {
     // Fetch initial messages from API
     axios
-      .get("https://chat-app-backend-nhmx.onrender.com//api/messages")
+      .get("https://chat-app-backend-nhmx.onrender.com/api/messages")
       .then((res) => setMessages(res.data))
       .catch((err) => console.error("Failed fetching messages", err));
 
@@ -33,7 +33,7 @@ function App() {
       formData.append("file", file);
       try {
         const res = await axios.post(
-          "https://chat-app-backend-nhmx.onrender.com//api/upload",
+          "https://chat-app-backend-nhmx.onrender.com/api/upload",
           formData,
         );
         fileUrl = res.data.fileUrl;
