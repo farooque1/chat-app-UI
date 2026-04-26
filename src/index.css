@@ -48,12 +48,31 @@ body {
   padding: 1.5rem;
   background: rgba(255, 255, 255, 0.9);
   border-bottom: 1px solid rgba(0,0,0,0.05);
-  text-align: center;
   font-weight: 600;
   font-size: 1.2rem;
   color: var(--text-main);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
   z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reset-btn {
+  background: #fee2e2;
+  color: #ef4444;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.reset-btn:hover {
+  background: #fca5a5;
+  color: #b91c1c;
 }
 
 .chat-box {

@@ -22,8 +22,21 @@ function App() {
       setMessages((prev) => [...prev, message]);
     });
 
-    return () => socket.off("receiveMessage");
+    socket.on("chatReset", () => {
+      setMessages([]);
+    });
+
+    return () => {
+      socket.off("receiveMessage");
+      socket.off("chatReset");
+    };
   }, []);
+
+  const handleResetChat = () => {
+    if (window.confirm("Are you sure you want to delete all messages? This cannot be undone.")) {
+      socket.emit("resetChat");
+    }
+  };
 
   const handleSendMessage = async (text, file) => {
     let fileUrl = null;
@@ -51,7 +64,10 @@ function App() {
 
   return (
     <div className="app-container">
-      <div className="header">Modern Chat</div>
+      <div className="header">
+        <span>Modern Chat</span>
+        <button className="reset-btn" onClick={handleResetChat}>Clear Chat</button>
+      </div>
       <ChatBox messages={messages} />
       <MessageInput onSendMessage={handleSendMessage} />
     </div>
